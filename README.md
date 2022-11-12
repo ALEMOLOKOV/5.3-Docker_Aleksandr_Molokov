@@ -48,6 +48,7 @@ vagrant@vagrant:~$ sudo docker run -v /data:/data --name debian-container -d -t 
 Проверка запущенные контейнеров
 
 vagrant@vagrant:~$ sudo docker ps
+
 CONTAINER ID   IMAGE     COMMAND       CREATED          STATUS          PORTS     NAMES
 03d3f5a4440d   debian    "bash"        15 seconds ago   Up 12 seconds             debian-container
 4d1ff3d27ff8   centos    "/bin/bash"   4 minutes ago    Up 4 minutes              centos-container
@@ -59,12 +60,15 @@ vagrant@vagrant:/$ docker exec centos-container /bin/bash -c "echo test_line>/da
 Созадние файла в папке /data на хостовой машине
 
 vagrant@vagrant:/$ cd /data
+
 vagrant@vagrant:/data$ sudo nano host_file.txt
 
 Переключение в контейнер debian и проверка файлов в папке /data в контейнере
 
 vagrant@vagrant:/$ sudo docker exec -it debian-container /bin/bash
+
 root@03d3f5a4440d:/# cd /data
+
 root@03d3f5a4440d:/data# ls -l
 total 8
 -rw-r--r-- 1 root root 10 Nov 12 10:33 centos_file.txt
