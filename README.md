@@ -71,7 +71,9 @@ root@03d3f5a4440d:/# cd /data
 
 root@03d3f5a4440d:/data# ls -l
 total 8
+
 -rw-r--r-- 1 root root 10 Nov 12 10:33 centos_file.txt
+
 -rw-r--r-- 1 root root 18 Nov 12 10:35 host_file.txt
 
 
