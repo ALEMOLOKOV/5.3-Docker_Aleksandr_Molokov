@@ -33,29 +33,36 @@ Gitlab сервер для реализации CI/CD процессов и пр
 
 Задание 3
 Запускаем первый контейнер из образа centos c любым тэгом в фоновом режиме, подключив папку /data из текущей рабочей директории на хостовой машине в /data контейнера
+
 Создаю папку data 
 vagrant@vagrant:~$ sudo mkdir data
 
 Запуск контернера centos  и подключение папки /data
+
 vagrant@vagrant:~$ sudo docker run -v /data:/data --name centos-container -d -t centos
 
 Запуск контейнера debian и подключение папки /data
+
 vagrant@vagrant:~$ sudo docker run -v /data:/data --name debian-container -d -t debian
 
 Проверка запущенные контейнеров
+
 vagrant@vagrant:~$ sudo docker ps
 CONTAINER ID   IMAGE     COMMAND       CREATED          STATUS          PORTS     NAMES
 03d3f5a4440d   debian    "bash"        15 seconds ago   Up 12 seconds             debian-container
 4d1ff3d27ff8   centos    "/bin/bash"   4 minutes ago    Up 4 minutes              centos-container
 
 Подключение к контернеру centos (sudo docker exec) и добавление файла в папку /data
+
 vagrant@vagrant:/$ docker exec centos-container /bin/bash -c "echo test_line>/data/centos_file.txt"
 
 Созадние файла в папке /data на хостовой машине
+
 vagrant@vagrant:/$ cd /data
 vagrant@vagrant:/data$ sudo nano host_file.txt
 
 Переключение в контейнер debian и проверка файлов в папке /data в контейнере
+
 vagrant@vagrant:/$ sudo docker exec -it debian-container /bin/bash
 root@03d3f5a4440d:/# cd /data
 root@03d3f5a4440d:/data# ls -l
